@@ -41,13 +41,13 @@ public:
     }
 
     void write(int value) override {
-        //std::this_thread::sleep_for(std::chrono::milliseconds(writeDelay));
+        std::this_thread::sleep_for(std::chrono::milliseconds(config["writeDelay"]));
         //fileStream.write(reinterpret_cast<char*>(&value), sizeof(int));
         fileStream << value << std::endl;
     }
 
     int read() override {
-        //std::this_thread::sleep_for(std::chrono::milliseconds(readDelay));
+        std::this_thread::sleep_for(std::chrono::milliseconds(config["readDelay"]));
         //fileStream.read(reinterpret_cast<char*>(&value), sizeof(int));
         fileStream >> value;
         return value;
@@ -58,12 +58,12 @@ public:
     }
 
     void shift(bool side) override {
-        //std::this_thread::sleep_for(std::chrono::milliseconds(shiftDelay));
+        std::this_thread::sleep_for(std::chrono::milliseconds(config["shiftDelay"]));
         side ? ++pos : --pos;
     }
 
     void rewind() override {
-        //std::this_thread::sleep_for(std::chrono::milliseconds(rewindDelay));
+        std::this_thread::sleep_for(std::chrono::milliseconds(config["rewindDelay"]));
         fileStream.clear(); // Clear eof flag
         fileStream.seekg(0, std::ios::beg);
     }
