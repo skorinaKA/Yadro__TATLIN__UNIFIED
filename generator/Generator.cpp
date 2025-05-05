@@ -5,12 +5,13 @@
 #include <sstream>
 
 void main(int argc, char* argv[]) {
-    if (argc != 2) {
-        std::cout << "Usage: " << argv[0] << " <count_numbers>" << std::endl;
+    if (argc != 3) {
+        std::cout << "Usage: " << argv[0] << " <count_numbers> <output_file>" << std::endl;
         return;
     }
 
     int count = atoi(argv[1]);
+    std::string path = argv[2];
     
     srand(time(NULL));
 
@@ -20,7 +21,7 @@ void main(int argc, char* argv[]) {
     auto random_integer = uni(rng);
 
     std::stringstream buffer;
-    std::ofstream file("input.txt", std::ios::trunc);
+    std::ofstream file(path, std::ios::trunc);
 
     for (int index = 0; index < count; index++)
     {
