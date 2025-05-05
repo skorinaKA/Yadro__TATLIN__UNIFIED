@@ -1,0 +1,5 @@
+readDelay = 100
+writeDelay = 100
+shiftDelay = 50
+rewindDelay = 1
+memoryLimit = 100
